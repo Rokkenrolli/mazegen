@@ -13,7 +13,6 @@ enum Direction {
 
 
 const generator = (context:CanvasRenderingContext2D, board:Block[][]) => {
-    console.log(board[0][0])
     const path:Block[]    = [board[0][0]]
     
 
@@ -48,6 +47,7 @@ const determineDir = (first:Block, second:Block) => {
 
    
 }
+
 
 const breakWall = (start: Block,end:Block) => {
 

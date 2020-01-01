@@ -27,8 +27,7 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
     
     
     const draw = (block:Block) => {
-        if(block.start) context.fillStyle = "orange"
-        else if(block.end) context.fillStyle = "red"
+        if(block.start || block.end) context.fillStyle = "orange"
         else if (block.next) context.fillStyle = "blue"
         else if (block.visited) context.fillStyle= "white"
         else context.fillStyle="#b678bd"

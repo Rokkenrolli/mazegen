@@ -69,9 +69,6 @@ const Canvas  = () => {
          start.visited = true
          board[cols -1][rows -1].end = true
          board[cols -1][rows -1].bottomWall = false
-         console.log(board)
-         console.log(window.innerWidth * 0.8,blockWidth, window.innerHeight * 0.8,blockHeight )
-         console.log(board[cols -1][rows -1].pos)
         render(context,board)
       }
 
