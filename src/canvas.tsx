@@ -6,8 +6,8 @@ import generator from './generator';
 
 export const width  = window.innerWidth * 0.8
 export const height = window.innerHeight * 0.8 
-export const rows   = 20
-export const cols   = 40
+export const rows   = 30
+export const cols   = 60
 export const blockWidth =  width / cols
 export const blockHeight = height / rows
 export let lines = false
