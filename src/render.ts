@@ -50,7 +50,7 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
             context.beginPath()
             context.moveTo(start.x,start.y)
             context.lineTo(end.x,end.y)
-            context.strokeStyle = "black"
+            context.strokeStyle = "green"
             context.stroke()
         }
         
