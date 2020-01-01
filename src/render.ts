@@ -50,7 +50,7 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
             context.beginPath()
             context.moveTo(start.x,start.y)
             context.lineTo(end.x,end.y)
-            context.strokeStyle = "green"
+            context.strokeStyle = "black"
             context.stroke()
         }
         
@@ -66,7 +66,7 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
         if (block.pred) {
             const predPos:Coord = {x:block.pred.pos.x + blockWidth /2, y:block.pred.pos.y + blockHeight / 2}
             context.beginPath()
-            context.strokeStyle = "black"
+            context.strokeStyle = "green"
             context.moveTo(pos.x,pos.y)
             context.lineTo(predPos.x,predPos.y)
             context.stroke()
