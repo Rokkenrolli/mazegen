@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mazegen/static/css/main.673c74e5.chunk.css",
-    "main.js": "/mazegen/static/js/main.c63b6cd7.chunk.js",
-    "main.js.map": "/mazegen/static/js/main.c63b6cd7.chunk.js.map",
+    "main.js": "/mazegen/static/js/main.e8dd9ab8.chunk.js",
+    "main.js.map": "/mazegen/static/js/main.e8dd9ab8.chunk.js.map",
     "runtime-main.js": "/mazegen/static/js/runtime-main.a74aacca.js",
     "runtime-main.js.map": "/mazegen/static/js/runtime-main.a74aacca.js.map",
     "static/js/2.73e6054b.chunk.js": "/mazegen/static/js/2.73e6054b.chunk.js",
     "static/js/2.73e6054b.chunk.js.map": "/mazegen/static/js/2.73e6054b.chunk.js.map",
     "index.html": "/mazegen/index.html",
-    "precache-manifest.260dbb41518d16876a59e7b7a766b246.js": "/mazegen/precache-manifest.260dbb41518d16876a59e7b7a766b246.js",
+    "precache-manifest.97721c675ac5d13416e30398a8ace314.js": "/mazegen/precache-manifest.97721c675ac5d13416e30398a8ace314.js",
     "service-worker.js": "/mazegen/service-worker.js",
     "static/css/main.673c74e5.chunk.css.map": "/mazegen/static/css/main.673c74e5.chunk.css.map",
     "static/js/2.73e6054b.chunk.js.LICENSE": "/mazegen/static/js/2.73e6054b.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a74aacca.js",
     "static/js/2.73e6054b.chunk.js",
     "static/css/main.673c74e5.chunk.css",
-    "static/js/main.c63b6cd7.chunk.js"
+    "static/js/main.e8dd9ab8.chunk.js"
   ]
 }
