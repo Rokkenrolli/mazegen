@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <div className="container">
    <div>
-     <h1 className="header">Maze</h1>
+     <h1 className="header">Maze moi :D</h1>
    </div >
     <Canvas />
    </div>
