@@ -1,4 +1,4 @@
-import {width,height,rows,cols,lines} from "./canvas"
+import {lines,blockHeight,blockWidth} from "./canvas"
 
 
 export type Coord = {
@@ -25,14 +25,11 @@ export type Block = {
 
 const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
     
-    const blockWidth  = width  / cols
-    const blockHeight = height / rows
-
     
     const draw = (block:Block) => {
         context.fillRect(block.pos.x,block.pos.y,blockWidth,blockHeight)
         if(block.start) context.fillStyle = "orange"
-        else if(block.end) context.fillStyle = "orange"
+        else if(block.end) context.fillStyle = "red"
         else if (block.next) context.fillStyle = "blue"
         else if (block.visited) context.fillStyle= "white"
         else context.fillStyle="#b678bd"
@@ -79,6 +76,8 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
         drawWalls(e)
         if (lines) drawConnecting(e)
     } ) )
+    //context.fillStyle = "red"
+    //context.fillRect(0,0,blockWidth,blockHeight)
 }
 
 export default render

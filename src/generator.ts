@@ -13,11 +13,9 @@ enum Direction {
 
 
 const generator = (context:CanvasRenderingContext2D, board:Block[][]) => {
-    const startingpoint   = board[0][0]
-    const path:Block[]    = [startingpoint]
-    startingpoint.topWall = false
-    startingpoint.visited = true
-    startingpoint.start   = true
+    console.log(board[0][0])
+    const path:Block[]    = [board[0][0]]
+    
 
 
 const neighbours = (block:Block) => {
@@ -31,7 +29,6 @@ const neighbours = (block:Block) => {
     if (all.length === 0) return []
     else {
         const filtered = all.filter(x=>!x.visited)
-        console.log(filtered)
         return filtered
     }
 }    
@@ -78,14 +75,13 @@ const breakWall = (start: Block,end:Block) => {
 }
 
   
-  let current:Block | undefined = startingpoint
+  let current:Block | undefined = board[0][0]
   let next:Block | undefined  = undefined
   const step = () => { 
 
   if (path.length) {
     window.requestAnimationFrame(step)
     if (!current) return
-    console.log(current.row + " " + current.col)
     current.next = false
     current.visited = true
     const neighbors = neighbours(current)

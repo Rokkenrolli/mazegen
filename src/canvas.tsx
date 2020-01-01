@@ -6,8 +6,8 @@ import generator from './generator';
 
 export const width  = window.innerWidth * 0.8
 export const height = window.innerHeight * 0.8 
-export const rows   = 30
-export const cols   = 60
+export const rows   = 10
+export const cols   = 20
 export const blockWidth =  width / cols
 export const blockHeight = height / rows
 export let lines = false
@@ -63,7 +63,14 @@ const Canvas  = () => {
             board.push(temp)
 
         }
-        console.log(board)
+         const start =board[0][0]
+         start.start = true
+         start.topWall = false
+         start.visited = true
+         board[cols -1][rows -1].end = true
+         board[cols -1][rows -1].bottomWall = false
+         console.log(board)
+         console.log(board[cols -1][rows -1].pos)
         render(context,board)
       }
 
