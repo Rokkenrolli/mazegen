@@ -1,3 +1,5 @@
+Build deployed to [github.io](https://rokkenrolli.github.io/mazegen/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
