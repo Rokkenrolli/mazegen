@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f5b82f252b456f9ecc39bc163e33991e",
+    "revision": "6b7fb81398d600d679da61d51e4f7d7c",
     "url": "/mazegen/index.html"
   },
   {
-    "revision": "de7a22e031e2035e8ac7",
-    "url": "/mazegen/static/css/main.673c74e5.chunk.css"
+    "revision": "774e0398c155e81ae3ae",
+    "url": "/mazegen/static/css/main.85801792.chunk.css"
   },
   {
     "revision": "41120b751c33af5260d5",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mazegen/static/js/2.73e6054b.chunk.js.LICENSE"
   },
   {
-    "revision": "de7a22e031e2035e8ac7",
-    "url": "/mazegen/static/js/main.00773f7d.chunk.js"
+    "revision": "774e0398c155e81ae3ae",
+    "url": "/mazegen/static/js/main.ec028f8f.chunk.js"
   },
   {
     "revision": "e8861a2557833cda6993",
