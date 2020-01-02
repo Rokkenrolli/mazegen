@@ -11,31 +11,60 @@ export const cols   = 60
 export const blockWidth =  width / cols
 export const blockHeight = height / rows
 export let lines = false
+export let path  = false 
 
 const Canvas  = () => {
 
     
     const canvasRef = useRef<HTMLCanvasElement>(null); 
-    
+    let cPath:Block[] = []    
     let board: Block[][] = []
     const generate = () => {
       if (!canvasRef.current) return
       const context = canvasRef.current.getContext("2d")
       if(!context) return
         initalize(context)
-        generator(context,board)
+        generator(context,board,cPath)
       }
     
       const solve = () => {
         alert("not implemented")
       }
 
+      const generateCorrectPath = () => {
+        if (!canvasRef.current) return
+        const context = canvasRef.current.getContext("2d")
+        if(!context) return
+        cPath = []
+        let current = board[cols -1][rows -1]
+        while(current.pred) {
+            cPath.push(current)
+            current = current.pred
+        }
+        cPath.push(board[0][0])
+       render(context,board,cPath)
+    }
+
+
       const setLines = () => {
         if (!canvasRef.current) return
        const context = canvasRef.current.getContext("2d")
        if(!context) return
        lines = !lines
-       render(context,board)
+       render(context,board,cPath)
+      }
+
+      const showPath = () => {
+        if (!board.every(col => col.every(e => e.visited))) {
+          alert("Maze not finished yet")
+          return;
+        }
+        else {     
+          path = !path
+          generateCorrectPath()
+     
+        }
+        
       }
 
       const initalize = ( context:CanvasRenderingContext2D ) => {
@@ -69,7 +98,7 @@ const Canvas  = () => {
          start.visited = true
          board[cols -1][rows -1].end = true
          board[cols -1][rows -1].bottomWall = false
-        render(context,board)
+        render(context,board,cPath)
       }
 
       useEffect(() => {
@@ -83,9 +112,10 @@ const Canvas  = () => {
     return (
     <div className="canvasContainer">
          <div className ="buttons" >
-            <button className= "generator" onClick={() => generate()}>Generate Maze</button>
-            <button className= "solver" onClick={() =>solve()}>Solve maze</button>
-            <button className= "lines" onClick = {() =>setLines()}>{"show lines"}</button>
+            <button className= "generator" onClick = {() => generate()}>Generate Maze</button>
+            <button className= "solver"    onClick = {() => solve()}>Solve maze</button>
+            <button className= "lines"     onClick = {() => setLines()}>Show lines</button>
+            <button className= "path"      onClick = {() => showPath()}>Show correct path</button>
          </div>   
          <div>
             <canvas ref={canvasRef} className="canvas" width ={width} height={height} />

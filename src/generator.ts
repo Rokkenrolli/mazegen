@@ -12,11 +12,10 @@ enum Direction {
 
 
 
-const generator = (context:CanvasRenderingContext2D, board:Block[][]) => {
-    const path:Block[]    = [board[0][0]]
+const generator = (context:CanvasRenderingContext2D, board:Block[][], correctPath: Block[]) => {
+    const path:Block[]  = [board[0][0]]
     
-
-
+    
 const neighbours = (block:Block) => {
     const row = block.row
     const col = block.col
@@ -47,6 +46,8 @@ const determineDir = (first:Block, second:Block) => {
 
    
 }
+
+
 
 
 const breakWall = (start: Block,end:Block) => {
@@ -99,7 +100,7 @@ const breakWall = (start: Block,end:Block) => {
 
   }
   context.clearRect(0,0,width,height)
-  render(context,board)
+  render(context,board,correctPath)
   }
   
 window.requestAnimationFrame(step)

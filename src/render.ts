@@ -1,4 +1,4 @@
-import {lines,blockHeight,blockWidth} from "./canvas"
+import {lines,blockHeight,blockWidth, path} from "./canvas"
 
 
 export type Coord = {
@@ -23,18 +23,18 @@ export type Block = {
 
 
 
-const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
+const render = (context:CanvasRenderingContext2D, board: Block[][], correctPath:Block[]) => {
+  
     
-    
-    const draw = (block:Block) => {
-        if(block.start || block.end) context.fillStyle = "orange"
-        else if (block.next) context.fillStyle = "blue"
-        else if (block.visited) context.fillStyle= "white"
-        else context.fillStyle="#b678bd"
+    const draw = (block:Block, color:string) => {
+        
+        context.fillStyle= color
         context.fillRect(block.pos.x,block.pos.y,blockWidth,blockHeight)
         
     }
     
+    
+
     const drawWalls = (block:Block) => {
 
         const topLeft  = {x:block.pos.x, y:block.pos.y}
@@ -58,6 +58,16 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
        
     }
 
+    const drawCorrectPath = (path: Block[]) => {
+        context.fillStyle = "purple"
+        path.forEach(x => {
+            context.beginPath()
+            context.arc(x.pos.x + blockWidth / 2,x.pos.y + blockHeight / 2, Math.abs(blockHeight - blockWidth) * 2,0,360)
+            context.fill()
+            context.stroke()
+        })
+    }
+
     const drawConnecting = (block: Block) => {
         const pos:Coord = {x: block.pos.x + blockWidth / 2, y:block.pos.y+blockHeight /2}
         if (block.pred) {
@@ -72,12 +82,15 @@ const render = (context:CanvasRenderingContext2D, board: Block[][]) => {
 
 
     board.forEach(col => col.forEach(e =>{
-        draw(e) 
+        if(e.start || e.end) draw(e,"orange")
+        else if (e.next) draw(e,"blue")
+        else if(e.visited) draw(e,"white")
+        else draw(e,"#b678bd") 
         drawWalls(e)
         if (lines) drawConnecting(e)
+        
     } ) )
-    //context.fillStyle = "red"
-    //context.fillRect(0,0,blockWidth,blockHeight)
+    if (path)  drawCorrectPath(correctPath)
 }
 
 export default render
