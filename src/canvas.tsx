@@ -55,7 +55,7 @@ const Canvas  = () => {
       }
 
       const showPath = () => {
-        if (!board.every(col => col.every(e => e.visited))) {
+        if (!board[cols-1][rows -1].visited) {
           alert("Maze not finished yet")
           return;
         }
