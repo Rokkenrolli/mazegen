@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mazegen/precache-manifest.c1d302941a64fba1f223d57b8d0e8c09.js"
+  "/mazegen/precache-manifest.e633682b2fe36bb6b755a46138fef7fd.js"
 );
 
 self.addEventListener('message', (event) => {
