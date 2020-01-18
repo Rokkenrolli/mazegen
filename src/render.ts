@@ -62,10 +62,11 @@ const render = (context:CanvasRenderingContext2D, board: Block[][], correctPath:
         context.fillStyle = "purple"
         path.forEach(x => {
             context.beginPath()
-            context.arc(x.pos.x + blockWidth / 2,x.pos.y + blockHeight / 2, Math.abs(blockHeight - blockWidth) * 2,0,360)
+            context.arc(x.pos.x + blockWidth / 2,x.pos.y + blockHeight / 2, blockWidth / 8,0,360)
             context.fill()
             context.stroke()
         })
+        path.forEach(e =>drawConnecting(e))
     }
 
     const drawConnecting = (block: Block) => {
