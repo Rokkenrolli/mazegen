@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/mazegen/static/css/main.85801792.chunk.css",
-    "main.js": "/mazegen/static/js/main.ce047e16.chunk.js",
-    "main.js.map": "/mazegen/static/js/main.ce047e16.chunk.js.map",
+    "main.css": "/mazegen/static/css/main.a1e6df33.chunk.css",
+    "main.js": "/mazegen/static/js/main.19ccb0f6.chunk.js",
+    "main.js.map": "/mazegen/static/js/main.19ccb0f6.chunk.js.map",
     "runtime-main.js": "/mazegen/static/js/runtime-main.a74aacca.js",
     "runtime-main.js.map": "/mazegen/static/js/runtime-main.a74aacca.js.map",
-    "static/js/2.a47bdc93.chunk.js": "/mazegen/static/js/2.a47bdc93.chunk.js",
-    "static/js/2.a47bdc93.chunk.js.map": "/mazegen/static/js/2.a47bdc93.chunk.js.map",
+    "static/js/2.73e6054b.chunk.js": "/mazegen/static/js/2.73e6054b.chunk.js",
+    "static/js/2.73e6054b.chunk.js.map": "/mazegen/static/js/2.73e6054b.chunk.js.map",
     "index.html": "/mazegen/index.html",
-    "precache-manifest.e633682b2fe36bb6b755a46138fef7fd.js": "/mazegen/precache-manifest.e633682b2fe36bb6b755a46138fef7fd.js",
+    "precache-manifest.37def53344268c42c3920ad20e3b33dc.js": "/mazegen/precache-manifest.37def53344268c42c3920ad20e3b33dc.js",
     "service-worker.js": "/mazegen/service-worker.js",
-    "static/css/main.85801792.chunk.css.map": "/mazegen/static/css/main.85801792.chunk.css.map",
-    "static/js/2.a47bdc93.chunk.js.LICENSE": "/mazegen/static/js/2.a47bdc93.chunk.js.LICENSE"
+    "static/css/main.a1e6df33.chunk.css.map": "/mazegen/static/css/main.a1e6df33.chunk.css.map",
+    "static/js/2.73e6054b.chunk.js.LICENSE": "/mazegen/static/js/2.73e6054b.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.a74aacca.js",
-    "static/js/2.a47bdc93.chunk.js",
-    "static/css/main.85801792.chunk.css",
-    "static/js/main.ce047e16.chunk.js"
+    "static/js/2.73e6054b.chunk.js",
+    "static/css/main.a1e6df33.chunk.css",
+    "static/js/main.19ccb0f6.chunk.js"
   ]
 }
