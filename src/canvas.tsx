@@ -19,10 +19,15 @@ const Canvas  = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null); 
     let cPath:Block[] = []    
     let board: Block[][] = []
+    let generating: boolean = false;
     const generate = () => {
       if (!canvasRef.current) return
       const context = canvasRef.current.getContext("2d")
       if(!context) return
+      if (generating) {
+        alert("Maze is being generated")
+        return;
+      }
         initalize(context)
         generator(context,board,cPath)
       }
@@ -113,7 +118,7 @@ const Canvas  = () => {
     <div className="canvasContainer">
          <div className ="buttons" >
             <button className= "generator" onClick = {() => generate()}>Generate Maze</button>
-            <button className= "solver"    onClick = {() => solve()}>Solve maze</button>
+            <button className= "solver" disabled    onClick = {() => solve()}>Solve maze</button>
             <button className= "lines"     onClick = {() => setLines()}>Show lines</button>
             <button className= "path"      onClick = {() => showPath()}>Show correct path</button>
          </div>   

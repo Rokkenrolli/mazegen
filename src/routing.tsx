@@ -17,15 +17,14 @@ export default function Routing () {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/Mazegen">Maze generator</Link>
+              <Link to="/mazegen">Maze generator</Link>
             </li>
           </ul>
         </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+       
         <Switch>
-          <Route path="/Mazegen">
+          <Route path="/mazegen">
             <App />
           </Route>
           <Route path="/">
