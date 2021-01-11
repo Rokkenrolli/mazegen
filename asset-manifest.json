@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mazegen/static/css/main.33acb736.chunk.css",
-    "main.js": "/mazegen/static/js/main.f2d9b7b3.chunk.js",
-    "main.js.map": "/mazegen/static/js/main.f2d9b7b3.chunk.js.map",
+    "main.js": "/mazegen/static/js/main.a661fb0b.chunk.js",
+    "main.js.map": "/mazegen/static/js/main.a661fb0b.chunk.js.map",
     "runtime-main.js": "/mazegen/static/js/runtime-main.f151d52c.js",
     "runtime-main.js.map": "/mazegen/static/js/runtime-main.f151d52c.js.map",
     "static/js/2.d98a25f5.chunk.js": "/mazegen/static/js/2.d98a25f5.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.f151d52c.js",
     "static/js/2.d98a25f5.chunk.js",
     "static/css/main.33acb736.chunk.css",
-    "static/js/main.f2d9b7b3.chunk.js"
+    "static/js/main.a661fb0b.chunk.js"
   ]
 }
