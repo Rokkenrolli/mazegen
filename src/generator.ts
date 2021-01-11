@@ -8,7 +8,7 @@ import render from "./render"
 
 
 
-const generator = (context:CanvasRenderingContext2D, board:Block[][], correctPath: Block[]) => {
+const generator = (context:CanvasRenderingContext2D, board:Block[][],  cols:number, rows:number, blockWidth:number, blockHeight: number) => {
     const path:Block[]  = [board[0][0]]
 
 const breakWall = (start: Block,end:Block) => {
@@ -52,7 +52,7 @@ const breakWall = (start: Block,end:Block) => {
     if (!current) return
     current.next = false
     current.visited = true
-    const neighbors = neighbours(board,current)
+    const neighbors = neighbours(board,current,cols, rows)
     if (neighbors.length) {
         next= neighbors[Math.floor(Math.random()*neighbors.length)]; //pick a random next neighbor
         next.pred = current
@@ -67,7 +67,7 @@ const breakWall = (start: Block,end:Block) => {
 
   }
   context.clearRect(0,0,width,height)
-  render(context,board,correctPath)
+  render(context,board,blockWidth, blockHeight)
   }
   
 window.requestAnimationFrame(step)

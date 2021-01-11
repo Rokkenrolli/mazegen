@@ -9,6 +9,12 @@
   border: 0px;
 }
 
+.sliders {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
 .buttons {
   align-items: center;
   display: flex;

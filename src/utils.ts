@@ -1,5 +1,4 @@
 import render, { Block, } from "./render"
-import { rows, cols } from './canvas';
 
 export enum Direction {
     Up = 1,
@@ -8,7 +7,7 @@ export enum Direction {
     Right,
 }   
 
-const neighbours = (board:Block[][],block:Block, solving?:boolean):Block[] => {
+const neighbours = (board:Block[][],block:Block,cols:number,rows:number, solving?:boolean):Block[] => {
     const row = block.row
     const col = block.col
     let all:Block[] = []
@@ -56,7 +55,7 @@ const filterAvailable = (current:Block, neighbours: Block[]) => {
     })
 }
 
-const generateCorrectPath = (context:CanvasRenderingContext2D,board: Block[][], cPath: Block[]) => {
+const generateCorrectPath = (context:CanvasRenderingContext2D,board: Block[][],cPath:Block[],cols:number, rows:number, blockWidth:number, blockHeight: number) => {
     
     cPath = [];
     let current = board[cols - 1][rows - 1];
@@ -67,7 +66,8 @@ const generateCorrectPath = (context:CanvasRenderingContext2D,board: Block[][], 
             current.onPath = true
             current = current.pred;
         }
-        render(context, board, cPath);
+        render(context, board, blockWidth, blockHeight);
+     
     }
    
     cPath.push(board[0][0]);

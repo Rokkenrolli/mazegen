@@ -1,5 +1,5 @@
 
-import {lines,blockHeight,blockWidth} from "./canvas"
+import {lines} from "./canvas"
 
 
 export type Coord = {
@@ -28,7 +28,7 @@ export type Block = {
 
 
 
-const render = (context:CanvasRenderingContext2D, board: Block[][], correctPath:Block[]) => {
+const render = (context:CanvasRenderingContext2D, board: Block[][], blockWidth:number, blockHeight:number) => {
   
     
     const draw = (block:Block, color:string,sizeOffset?:number) => {
@@ -37,6 +37,8 @@ const render = (context:CanvasRenderingContext2D, board: Block[][], correctPath:
         context.fillRect(block.pos.x,block.pos.y,blockWidth- offset,blockHeight- offset)
         
     }
+
+    
     
     
 
@@ -81,7 +83,7 @@ const render = (context:CanvasRenderingContext2D, board: Block[][], correctPath:
     board.forEach(col => col.forEach(e =>{
         if(e.start || e.end) draw(e,"orange")
         else if (e.next) draw(e,"blue")
-        else if (e.onPath) draw(e, "#85bbb6", 10)
+        else if (e.onPath) draw(e, "#85bbb6")
         else if(e.solved) draw(e, "#8abb85")
         else if(e.visited) draw(e,"white")
         else draw(e,"#b678bd") 

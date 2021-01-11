@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
 import render, { Block } from "./render";
 import generator from "./generator";
@@ -6,14 +6,16 @@ import { solver } from "./solver";
 
 export const width = window.innerWidth * 0.8;
 export const height = window.innerHeight * 0.8;
-export const rows = 20;
-export const cols = 40;
-export const blockWidth = width / cols;
-export const blockHeight = height / rows;
+
 export let lines = false;
 
 const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [rows, setRows] = useState(20);
+  const [cols, setCols] = useState(40);
+  const [blockWidth, setBlockWidth] = useState(width / cols);
+  const [blockHeight, setBlockHeight] = useState(height / rows);
+
   let cPath: Block[] = [];
   let board: Block[][] = [];
   let generating: boolean = false;
@@ -26,7 +28,7 @@ const Canvas = () => {
       return;
     }
     initalize(context);
-    generator(context, board, cPath);
+    generator(context, board, cols, rows, blockWidth, blockHeight);
   };
 
   const solve = () => {
@@ -37,7 +39,7 @@ const Canvas = () => {
       alert("Maze is being generated");
       return;
     }
-    solver(context, board, cPath);
+    solver(context, board, cPath, cols, rows, blockWidth, blockHeight);
   };
 
   const setLines = () => {
@@ -45,7 +47,7 @@ const Canvas = () => {
     const context = canvasRef.current.getContext("2d");
     if (!context) return;
     lines = !lines;
-    render(context, board, cPath);
+    render(context, board, blockWidth, blockHeight);
   };
 
   const initalize = (context: CanvasRenderingContext2D) => {
@@ -79,7 +81,7 @@ const Canvas = () => {
     start.visited = true;
     board[cols - 1][rows - 1].end = true;
     board[cols - 1][rows - 1].bottomWall = false;
-    render(context, board, cPath);
+    render(context, board, blockWidth, blockHeight);
   };
 
   useEffect(() => {
@@ -101,6 +103,34 @@ const Canvas = () => {
         <button className="lines" onClick={() => setLines()}>
           Show lines
         </button>
+      </div>
+      <div className="sliders">
+        <input
+          id="colSlider"
+          type="range"
+          min={1}
+          onChange={(event) => {
+            setCols(Number(event.target.value));
+            setBlockHeight(height / rows);
+            setBlockWidth(width / cols);
+          }}
+          value={cols}
+          step={1}
+        ></input>
+        <label htmlFor="colSlider">{`columns: ${cols}`}</label>
+        <input
+          id="rowSlider"
+          type="range"
+          min={1}
+          onChange={(event) => {
+            setRows(Number(event.target.value));
+            setBlockHeight(height / rows);
+            setBlockWidth(width / cols);
+          }}
+          value={rows}
+          step={1}
+        ></input>
+        <label htmlFor="rowSlider">{`rows: ${rows}`}</label>
       </div>
       <div>
         <canvas
