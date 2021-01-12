@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/mazegen/static/css/main.bf656564.chunk.css",
-    "main.js": "/mazegen/static/js/main.1e5e9595.chunk.js",
-    "main.js.map": "/mazegen/static/js/main.1e5e9595.chunk.js.map",
+    "main.css": "/mazegen/static/css/main.2877fc26.chunk.css",
+    "main.js": "/mazegen/static/js/main.2c409b56.chunk.js",
+    "main.js.map": "/mazegen/static/js/main.2c409b56.chunk.js.map",
     "runtime-main.js": "/mazegen/static/js/runtime-main.f151d52c.js",
     "runtime-main.js.map": "/mazegen/static/js/runtime-main.f151d52c.js.map",
     "static/js/2.fc4fcd14.chunk.js": "/mazegen/static/js/2.fc4fcd14.chunk.js",
     "static/js/2.fc4fcd14.chunk.js.map": "/mazegen/static/js/2.fc4fcd14.chunk.js.map",
     "index.html": "/mazegen/index.html",
-    "static/css/main.bf656564.chunk.css.map": "/mazegen/static/css/main.bf656564.chunk.css.map",
+    "static/css/main.2877fc26.chunk.css.map": "/mazegen/static/css/main.2877fc26.chunk.css.map",
     "static/js/2.fc4fcd14.chunk.js.LICENSE.txt": "/mazegen/static/js/2.fc4fcd14.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f151d52c.js",
     "static/js/2.fc4fcd14.chunk.js",
-    "static/css/main.bf656564.chunk.css",
-    "static/js/main.1e5e9595.chunk.js"
+    "static/css/main.2877fc26.chunk.css",
+    "static/js/main.2c409b56.chunk.js"
   ]
 }
