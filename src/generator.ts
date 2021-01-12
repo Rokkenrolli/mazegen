@@ -1,6 +1,6 @@
 import { Block } from "./render"
 import {  height, width } from "./canvas"
-import {neighbours, determineDir, Direction} from "./utils"
+import {neighbours, determineDir, Direction, findStartOrEnd} from "./utils"
 import render from "./render"
 
 
@@ -8,8 +8,13 @@ import render from "./render"
 
 
 
+
 const generator = (context:CanvasRenderingContext2D, board:Block[][],  cols:number, rows:number, blockWidth:number, blockHeight: number) => {
-    const path:Block[]  = [board[0][0]]
+    const start  =findStartOrEnd(board,true)
+    if (!start) {
+        return // startingpoint should always exist
+    }
+    const path:Block[]  = [start]
 
 const breakWall = (start: Block,end:Block) => {
 
@@ -37,7 +42,7 @@ const breakWall = (start: Block,end:Block) => {
 }
 
   
-  let current:Block | undefined = board[0][0]
+  let current:Block | undefined = start
   let next:Block | undefined  = undefined
 
 /**

@@ -1,11 +1,16 @@
 
+
 import { height, width } from "./canvas"
 import render, { Block } from "./render"
-import { neighbours, filterAvailable, generateCorrectPath } from "./utils"
+import { neighbours, filterAvailable, generateCorrectPath, findStartOrEnd } from "./utils"
 
 
 const solver = (context:CanvasRenderingContext2D,board: Block[][],correctPath: Block[],cols:number, rows:number, blockWidth:number, blockHeight: number) => {
-    const path:Block[]  = [board[0][0]] //start from the first block - set start
+    const start = findStartOrEnd(board, true)
+    if (!start) {
+        return
+    }
+    const path:Block[]  = [start] //start from the first block - set start
     let found = false
 
     const step = () => { 
@@ -23,7 +28,7 @@ const solver = (context:CanvasRenderingContext2D,board: Block[][],correctPath: B
             current.solved = true
             if (current.end) {
                 found = true
-                generateCorrectPath(context, board, correctPath, cols, rows, blockWidth, blockHeight)
+                generateCorrectPath(context, board, correctPath, blockWidth, blockHeight)
                 board.forEach(e => e.forEach(r => r.solved = false))
                 return current
             }

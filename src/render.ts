@@ -81,7 +81,8 @@ const render = (context:CanvasRenderingContext2D, board: Block[][], blockWidth:n
 
 
     board.forEach(col => col.forEach(e =>{
-        if(e.start || e.end) draw(e,"orange")
+        if(e.start) draw(e,"orange")
+        else if (e.end) draw(e, "#04fca4")
         else if (e.next) draw(e,"blue")
         else if (e.onPath) draw(e, "#85bbb6")
         else if(e.solved) draw(e, "#8abb85")

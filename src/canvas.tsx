@@ -3,6 +3,7 @@ import "./App.css";
 import render, { Block } from "./render";
 import generator from "./generator";
 import { solver } from "./solver";
+import { randomizeStartAndEnd } from "./utils";
 
 export const width = window.innerWidth * 0.8;
 export const height = window.innerHeight * 0.8;
@@ -15,10 +16,13 @@ const Canvas = () => {
   const [cols, setCols] = useState(40);
   const [blockWidth, setBlockWidth] = useState(width / cols);
   const [blockHeight, setBlockHeight] = useState(height / rows);
+  const [randomizedLocations, setRandomizedLocations] = useState(false);
+  const [rerollCount, increaseRerollCount] = useState(0);
 
   let cPath: Block[] = [];
   let board: Block[][] = [];
   let generating: boolean = false;
+
   const generate = () => {
     if (!canvasRef.current) return;
     const context = canvasRef.current.getContext("2d");
@@ -27,7 +31,6 @@ const Canvas = () => {
       alert("Maze is being generated");
       return;
     }
-    initalize(context);
     generator(context, board, cols, rows, blockWidth, blockHeight);
   };
 
@@ -75,13 +78,22 @@ const Canvas = () => {
         });
       board.push(temp);
     }
-    const start = board[0][0];
-    start.start = true;
-    start.topWall = false;
-    start.visited = true;
-    board[cols - 1][rows - 1].end = true;
-    board[cols - 1][rows - 1].bottomWall = false;
+    if (randomizedLocations) {
+      randomizeStartAndEnd(board, cols, rows, true); //pick random start
+      randomizeStartAndEnd(board, cols, rows, false); //pick random end
+    } else {
+      const start = board[0][0];
+      start.start = true;
+      start.visited = true;
+      const end = board[cols - 1][rows - 1];
+      end.end = true;
+    }
+
     render(context, board, blockWidth, blockHeight);
+  };
+
+  const reroll = () => {
+    increaseRerollCount(rerollCount + 1);
   };
 
   useEffect(() => {
@@ -103,6 +115,19 @@ const Canvas = () => {
         <button className="lines" onClick={() => setLines()}>
           Show lines
         </button>
+        <button onClick={() => setRandomizedLocations(!randomizedLocations)}>
+          {randomizedLocations
+            ? "Set static locations"
+            : "Set randomized locations"}
+        </button>
+        {randomizedLocations && (
+          <button onClick={() => reroll()}>Reroll</button>
+        )}
+        {randomizedLocations && (
+          <p>{`You have rerolled ${rerollCount} ${
+            rerollCount === 1 ? "time" : "times"
+          }`}</p>
+        )}
       </div>
       <div className="sliders">
         <input
@@ -111,6 +136,7 @@ const Canvas = () => {
           min={1}
           onChange={(event) => {
             setCols(Number(event.target.value));
+            setRows(rows);
             setBlockHeight(height / rows);
             setBlockWidth(width / cols);
           }}
@@ -124,6 +150,7 @@ const Canvas = () => {
           min={1}
           onChange={(event) => {
             setRows(Number(event.target.value));
+            setCols(cols);
             setBlockHeight(height / rows);
             setBlockWidth(width / cols);
           }}

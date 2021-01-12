@@ -55,10 +55,17 @@ const filterAvailable = (current:Block, neighbours: Block[]) => {
     })
 }
 
-const generateCorrectPath = (context:CanvasRenderingContext2D,board: Block[][],cPath:Block[],cols:number, rows:number, blockWidth:number, blockHeight: number) => {
-    
+const generateCorrectPath = (context:CanvasRenderingContext2D,board: Block[][],cPath:Block[], blockWidth:number, blockHeight: number) => {
+    const start = findStartOrEnd(board, true)
+    const end = findStartOrEnd(board, false)
+    if (!(start)) {
+        return //start and end should always exist
+    }
+    if (!end) {
+        return
+    }
     cPath = [];
-    let current = board[cols - 1][rows - 1];
+    let current = end;
     const step = () =>  {
         if (current.pred) {
             window.requestAnimationFrame(step)
@@ -70,10 +77,45 @@ const generateCorrectPath = (context:CanvasRenderingContext2D,board: Block[][],c
      
     }
    
-    cPath.push(board[0][0]);
-    board[0][0].onPath = true
+    cPath.push(start);
+    start.onPath = true
     window.requestAnimationFrame(step)
     
   };
 
-export {neighbours, determineDir, filterAvailable, generateCorrectPath}
+  const findStartOrEnd = (board: Block[][], start:boolean): Block | undefined => {
+    let found: Block |undefined  
+    board.forEach(e => {
+        e.forEach(b => {
+            if (start ? b.start : b.end) {
+                found = b
+                return
+            }
+        })
+    })
+    return found
+  }
+
+  const filterEdges = (board: Block[][], cols: number, rows:number) => {
+      const filtered:Block[] = []
+      board.forEach(c => {
+          c.forEach(b => {
+              if (b.row === 0 || b.row === rows-1 || b.col === 0 || b.col === cols-1) {
+                  filtered.push(b)
+              }
+          })
+      })
+      return filtered
+  }
+
+  const randomizeStartAndEnd = (board:Block[][], cols:number, rows: number, start:boolean) => {
+        const availableSpots = filterEdges(board,cols,rows)
+        
+        
+      
+        const cell = availableSpots[Math.floor(Math.random() * availableSpots.length)] //pick one randomly
+        start ? cell.start = true : cell.end=true
+        if (start) cell.visited = true
+  }
+
+export {neighbours, determineDir, filterAvailable, generateCorrectPath, findStartOrEnd, randomizeStartAndEnd}
