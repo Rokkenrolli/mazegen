@@ -39,7 +39,7 @@ const Canvas = () => {
     const context = canvasRef.current.getContext("2d");
     if (!context) return;
     if (generating) {
-      alert("Maze is being generated");
+      alert("Maze is being Generated");
       return;
     }
     solver(context, board, cPath, cols, rows, blockWidth, blockHeight);
